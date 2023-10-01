@@ -1,0 +1,305 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap");
+
+:root {
+  --bg-color: rgb(23, 23, 23);
+  --text-color: rgb(209, 209, 209);
+  --accent-color: #abaaed;
+}
+
+/* réinitialisation des styles par défaut */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.underline,
+a {
+  color: var(--accent-color);
+  position: relative;
+  width: fit-content;
+}
+
+.underline::before,
+a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  border-radius: 4px;
+  background-color: var(--accent-color);
+  bottom: -2px;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.underline:hover::before,
+a:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.box {
+  border: 4px solid var(--text-color);
+  padding: 3% 4%;
+  margin: 3rem 0;
+  border-radius: 15px;
+}
+
+.wrap-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* style de la page */
+/* header */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "IBM Plex Mono", monospace;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 3%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: var(--bg-color);
+  z-index: 1;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+header nav {
+  margin: 1rem 0;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+header nav ul li {
+  margin: 0 3rem;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+/* main */
+
+section {
+  padding-top: 5%;
+}
+
+section:last-child {
+  padding-bottom: 5%;
+}
+
+/* section #home */
+
+h2::before {
+  content: ">_";
+  font-weight: 700;
+  font-size: 2.3rem;
+  margin-right: 1rem;
+}
+
+h2 {
+  margin: 2rem 4%;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+#home ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#home ul li {
+  margin: 1% 0;
+}
+
+/* section #projets */
+
+.frise {
+  margin: 4rem auto;
+}
+
+.frise-element {
+  padding-bottom: 2.5rem;
+  /* bordure qui créer la ligne */
+  border-left: 3px solid var(--accent-color);
+  position: relative;
+  padding-left: 20px;
+  margin-left: 10px;
+}
+
+/* supprime la bordure du dernier élément */
+.frise > .frise-element:last-child {
+  border-color: transparent;
+}
+
+/* creation du point */
+.frise-element::before {
+  content: "";
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  left: -12px;
+  top: 0;
+}
+
+.date {
+  /* color: var(--accent-color); */
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.doc::before {
+  content: "⇒";
+  position: relative;
+  margin-right: 0.5rem;
+}
+
+.doc {
+  font-size: 0.8rem;
+  margin-left: 1.5rem;
+}
+
+.frise-element ul {
+  margin-left: 20px;
+}
+
+.frise-element li::before {
+  content: ">";
+  position: relative;
+}
+
+.frise-element li {
+  margin: 0.5rem 0;
+}
+
+/* section #contact */
+
+#contact ul {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#contact a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+/* responsive design */
+
+@media only screen and (max-width: 750px) {
+  #contact ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #contact ul li {
+    margin: 0.7rem 0;
+  }
+}
+
+/* smartphone */
+@media only screen and (max-width: 750px) {
+  header nav {
+    display: none;
+  }
+
+  /* section {
+    padding-top: 6rem;
+  }
+
+  .box,
+  #contact ul {
+    flex-direction: column;
+    align-items: left;
+    padding: 2rem 2rem;
+    margin: 3rem 0;
+  }
+
+  #contact ul li,
+  .box div {
+    margin: 1rem 0;
+  }
+
+  section h2 {
+    margin: 1rem 0;
+  } */
+}
+
+/* animation fade-in pour les éléments qui apparaissent au scroll */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* animation slide-in-left pour les éléments qui apparaissent en glissant depuis la gauche */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.slide-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* animation slide-in-right pour les éléments qui apparaissent en glissant depuis la droite */
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.slide-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
