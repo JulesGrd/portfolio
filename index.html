@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./assets/ico.png" type="image/x-icon">
-    <meta name="description" content="Jules GIRARD">
+    <meta name="description" content="Portfolio de Jules Girard, étudiant ingénieur à l'ISIMA — passionné par les réseaux, l'administration système et la domotique.">
 
     <link rel="stylesheet" href="style.css">
 
@@ -17,13 +17,16 @@
 <body>
     <header>
         <h1>Jules GIRARD</h1>
-        <nav>
+        <nav id="mainNav">
             <ul>
                 <li><a href="#home">Présentation</a></li>
                 <li><a href="#projets">Projets</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </header>
     <main>
         <section id="home">
@@ -62,15 +65,6 @@
             </div>
         </section>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <ul class="box fade-in">
-                <li>Mail&nbsp;: <a href="mailto:jules.girard@etu.isima.fr">jules.girard@etu.isima.fr</a></li>
-                <li>Gitlab (Étudiant)&nbsp;: <a href="https://gitlab.isima.fr/jugirard3">@jugirard3</a></li>
-                <li>Github (Perso)&nbsp;: <a href="https://github.com/JulesGrd">@JulesGrd</a></li>
-            </ul>
-        </section>
-
         <section id="projets">
             <h2>Projets</h2>
 
@@ -102,21 +96,7 @@
                     </div>
                 </article>
 
-                <article class="project-card fade-in">
-                    <div class="project-body">
-                        <div class="project-header">
-                            <h3>Monod Crush</h3>
-                            <div class="project-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">Django</span>
-                            </div>
-                        </div>
-                        <p>Application web développée en Python avec Django.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/JulesGrd/monod-crush" target="_blank">GitHub</a>
-                        </div>
-                    </div>
-                </article>
+
 
                 <article class="project-card fade-in">
                     <div class="project-body">
@@ -155,7 +135,7 @@
                     </div>
                 </article>
 
-                
+
 
                 <article class="project-card fade-in">
                     <div class="project-body">
@@ -196,6 +176,9 @@
                 </article>
 
                 <article class="project-card fade-in">
+                    <div class="project-img-wrap">
+                        <img src="./assets/projects/taquin.png" alt="Jeu de Taquin">
+                    </div>
                     <div class="project-body">
                         <div class="project-header">
                             <h3>Jeu de Taquin</h3>
@@ -227,9 +210,9 @@
                 </article>
 
                 <article class="project-card fade-in">
-                    <div class="project-img-wrap">
+                    <!-- <div class="project-img-wrap">
                         <img src="./assets/projects/immo.png" alt="Site de gestion de parc immobilier">
-                    </div>
+                    </div> -->
                     <div class="project-body">
                         <div class="project-header">
                             <h3>Gestion de parc immobilier</h3>
@@ -245,6 +228,21 @@
                             la base de données et rédaction des requêtes SQL.</p>
                         <div class="project-links">
                             <a href="https://gitlab.isima.fr/jugirard3/unicornesn" target="_blank">GitLab</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card fade-in">
+                    <div class="project-body">
+                        <div class="project-header">
+                            <h3>Monod Crush</h3>
+                            <div class="project-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">Django</span>
+                            </div>
+                        </div>
+                        <p>Application web développée en Python avec Django.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/JulesGrd/monod-crush" target="_blank">GitHub</a>
                         </div>
                     </div>
                 </article>
@@ -397,9 +395,9 @@
         </section>
 
         <section id="contact">
+            <h2>Contact</h2>
             <ul class="box fade-in">
-                <li>Discord&nbsp;: jg45#4641</li>
-                <li>Mail&nbsp;: <a href="mailto:jules.girard@etu.uca.fr">jules.girard@etu.uca.fr</a></li>
+                <li>Mail&nbsp;: <a href="mailto:jules.girard@etu.isima.fr">jules.girard@etu.isima.fr</a></li>
                 <li>Gitlab (Étudiant)&nbsp;: <a href="https://gitlab.isima.fr/jugirard3">@jugirard3</a></li>
                 <li>Github (Perso)&nbsp;: <a href="https://github.com/JulesGrd">@JulesGrd</a></li>
             </ul>
@@ -446,6 +444,71 @@
             btn.setAttribute("aria-expanded", !expanded);
             collapse.classList.toggle("open", !expanded);
         }
+
+        // ── Navigation mobile ────────────────────────────────────────────────
+        const navToggle = document.getElementById("navToggle");
+        const mainNav = document.getElementById("mainNav");
+        navToggle.addEventListener("click", () => {
+            const expanded = navToggle.getAttribute("aria-expanded") === "true";
+            navToggle.setAttribute("aria-expanded", String(!expanded));
+            mainNav.classList.toggle("open", !expanded);
+        });
+        mainNav.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                mainNav.classList.remove("open");
+                navToggle.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        // ── Tracking ──────────────────────────────────────────────────────────
+        // Remplace null par l'URL de ton endpoint pour recevoir les events.
+        // L'endpoint doit accepter un POST avec un body JSON.
+        const TRACKING_ENDPOINT = null;
+
+        function getSessionId() {
+            let id = sessionStorage.getItem("_sid");
+            if (!id) {
+                id = Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+                sessionStorage.setItem("_sid", id);
+            }
+            return id;
+        }
+
+        function sendEvent(type, data) {
+            const payload = {
+                type,
+                ...data,
+                session: getSessionId(),
+                ts: new Date().toISOString(),
+            };
+            if (TRACKING_ENDPOINT) {
+                navigator.sendBeacon(TRACKING_ENDPOINT, JSON.stringify(payload));
+            } else {
+                console.log("[tracking]", payload);
+            }
+        }
+
+        // Clics sur les liens
+        document.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                sendEvent("link_click", {
+                    href: link.href,
+                    label: link.textContent.trim().slice(0, 80),
+                });
+            });
+        });
+
+        // Temps passé sur la page
+        const _pageStart = Date.now();
+        function sendTimeOnPage() {
+            sendEvent("time_on_page", {
+                duration_s: Math.round((Date.now() - _pageStart) / 1000),
+            });
+        }
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "hidden") sendTimeOnPage();
+        });
+        window.addEventListener("beforeunload", sendTimeOnPage);
     </script>
 
 

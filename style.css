@@ -1,6 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap");
 
 :root {
   --bg-color: rgb(23, 23, 23);
@@ -275,6 +273,15 @@ h3 {
   line-height: 1.7;
 }
 
+/* Cartes sans image : fond gris placeholder */
+.project-card:not(:has(.project-img-wrap))::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 200px;
+  background: rgb(35, 35, 35);
+}
+
 .project-links {
   display: flex;
   gap: 1.5rem;
@@ -426,31 +433,60 @@ h3 {
 }
 
 /* smartphone */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
+  align-self: center;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: var(--text-color);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
 @media only screen and (max-width: 750px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  header {
+    position: relative;
+  }
+
   header nav {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: -3%;
+    right: -3%;
+    background: var(--bg-color);
+    padding: 1rem 3%;
+    border-bottom: 2px solid var(--text-color);
+    z-index: 10;
   }
 
-  /* section {
-    padding-top: 6rem;
+  header nav.open {
+    display: block;
   }
 
-  .box,
-  #contact ul {
+  header nav ul {
     flex-direction: column;
-    align-items: left;
-    padding: 2rem 2rem;
-    margin: 3rem 0;
+    gap: 1rem;
   }
 
-  #contact ul li,
-  .box div {
-    margin: 1rem 0;
+  header nav ul li {
+    margin: 0;
   }
-
-  section h2 {
-    margin: 1rem 0;
-  } */
 }
 
 /* animation fade-in pour les éléments qui apparaissent au scroll */
