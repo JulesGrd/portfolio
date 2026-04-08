@@ -10,6 +10,8 @@
     <meta name="description" content="Portfolio de Jules Girard, étudiant ingénieur à l'ISIMA — passionné par les réseaux, l'administration système et la domotique.">
 
     <link rel="stylesheet" href="style.css">
+    <script data-goatcounter="https://jg45.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
 
     <title>Jules GIRARD</title>
 </head>
@@ -460,40 +462,19 @@
             });
         });
 
-        // ── Tracking ──────────────────────────────────────────────────────────
-        // Remplace null par l'URL de ton endpoint pour recevoir les events.
-        // L'endpoint doit accepter un POST avec un body JSON.
-        const TRACKING_ENDPOINT = null;
-
-        function getSessionId() {
-            let id = sessionStorage.getItem("_sid");
-            if (!id) {
-                id = Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
-                sessionStorage.setItem("_sid", id);
-            }
-            return id;
-        }
-
-        function sendEvent(type, data) {
-            const payload = {
-                type,
-                ...data,
-                session: getSessionId(),
-                ts: new Date().toISOString(),
-            };
-            if (TRACKING_ENDPOINT) {
-                navigator.sendBeacon(TRACKING_ENDPOINT, JSON.stringify(payload));
-            } else {
-                console.log("[tracking]", payload);
+        // ── Tracking (GoatCounter) ────────────────────────────────────────────
+        function gcCount(params) {
+            if (window.goatcounter && window.goatcounter.count) {
+                window.goatcounter.count(params);
             }
         }
 
-        // Clics sur les liens
-        document.querySelectorAll("a").forEach((link) => {
+        // Clics sur les liens (hors nav)
+        document.querySelectorAll("a:not(nav a)").forEach((link) => {
             link.addEventListener("click", () => {
-                sendEvent("link_click", {
-                    href: link.href,
-                    label: link.textContent.trim().slice(0, 80),
+                gcCount({
+                    path: "click/" + link.textContent.trim().slice(0, 60),
+                    event: true,
                 });
             });
         });
@@ -501,9 +482,8 @@
         // Temps passé sur la page
         const _pageStart = Date.now();
         function sendTimeOnPage() {
-            sendEvent("time_on_page", {
-                duration_s: Math.round((Date.now() - _pageStart) / 1000),
-            });
+            const s = Math.round((Date.now() - _pageStart) / 1000);
+            gcCount({ path: "time/" + s + "s", event: true });
         }
         document.addEventListener("visibilitychange", () => {
             if (document.visibilityState === "hidden") sendTimeOnPage();
