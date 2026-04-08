@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="380" viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .label-title    { font-size: 16px; font-weight: 600; fill: #2c3e50; }
+      .label-subtitle { font-size: 12px; fill: #555; }
+      .label-small    { font-size: 11px; fill: #666; }
+      .box-proxmox    { fill: #f3e5f5; stroke: #7b1fa2; stroke-width: 2; }
+      .box-vm         { fill: #fce4ec; stroke: #c2185b; stroke-width: 1.5; }
+      .box-docker     { fill: #fffde7; stroke: #f9a825; stroke-width: 1.5; }
+      .section-box    { fill: none; stroke: #1a237e; stroke-width: 1; stroke-dasharray: 3,3; opacity: 0.3; }
+      .connector-dashed { stroke: #999; stroke-width: 1.5; fill: none; stroke-dasharray: 5,5; }
+      .arrow-head     { fill: #666; }
+      .group-label    { font-size: 12px; font-weight: 600; fill: #1a237e; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" class="arrow-head"/>
+    </marker>
+  </defs>
+
+  <!-- Proxmox Host -->
+  <rect x="325" y="30" width="250" height="90" rx="10" class="box-proxmox"/>
+  <text x="450" y="62"  class="label-title"    text-anchor="middle">Proxmox Host</text>
+  <text x="450" y="85"  class="label-subtitle" text-anchor="middle">Hyperviseur</text>
+  <text x="450" y="106" class="label-small"    text-anchor="middle">IP : 192.168.1.10</text>
+
+  <!-- Section box -->
+  <rect x="20" y="185" width="860" height="160" rx="10" class="section-box"/>
+
+  <!-- Group labels -->
+  <text x="30"  y="205" class="group-label">Virtual Machines</text>
+  <text x="430" y="205" class="group-label">Docker Containers</text>
+
+  <!-- VM 1 : Linux -->
+  <rect x="30"  y="215" width="170" height="75" rx="6" class="box-vm"/>
+  <text x="115" y="240" class="label-title"    text-anchor="middle">VM Linux</text>
+  <text x="115" y="260" class="label-subtitle" text-anchor="middle">Debian / Ubuntu</text>
+  <text x="115" y="278" class="label-small"    text-anchor="middle">Services génériques</text>
+
+  <!-- VM 2 : Home Assistant -->
+  <rect x="220" y="215" width="170" height="75" rx="6" class="box-vm"/>
+  <text x="305" y="240" class="label-title"    text-anchor="middle">VM Linux #2</text>
+  <text x="305" y="260" class="label-subtitle" text-anchor="middle">Home Assistant</text>
+  <text x="305" y="278" class="label-small"    text-anchor="middle">Automatisation maison</text>
+
+  <!-- Docker 1 -->
+  <rect x="430" y="215" width="130" height="75" rx="6" class="box-docker"/>
+  <text x="495" y="240" class="label-title"    text-anchor="middle">Docker #1</text>
+  <text x="495" y="260" class="label-subtitle" text-anchor="middle">Nginx / App</text>
+  <text x="495" y="278" class="label-small"    text-anchor="middle">Web service</text>
+
+  <!-- Docker 2 -->
+  <rect x="580" y="215" width="130" height="75" rx="6" class="box-docker"/>
+  <text x="645" y="240" class="label-title"    text-anchor="middle">Docker #2</text>
+  <text x="645" y="260" class="label-subtitle" text-anchor="middle">PostgreSQL</text>
+  <text x="645" y="278" class="label-small"    text-anchor="middle">Données</text>
+
+  <!-- Docker 3 -->
+  <rect x="730" y="215" width="130" height="75" rx="6" class="box-docker"/>
+  <text x="795" y="240" class="label-title"    text-anchor="middle">Docker #3</text>
+  <text x="795" y="260" class="label-subtitle" text-anchor="middle">Prometheus</text>
+  <text x="795" y="278" class="label-small"    text-anchor="middle">Monitoring</text>
+
+  <!-- Connexions Proxmox → enfants -->
+  <path d="M 450 120 L 450 170 L 115 170 L 115 215" class="connector-dashed" marker-end="url(#arrowhead)"/>
+  <path d="M 450 120 L 450 170 L 305 170 L 305 215" class="connector-dashed" marker-end="url(#arrowhead)"/>
+  <path d="M 450 120 L 450 170 L 495 170 L 495 215" class="connector-dashed" marker-end="url(#arrowhead)"/>
+  <path d="M 450 120 L 450 170 L 645 170 L 645 215" class="connector-dashed" marker-end="url(#arrowhead)"/>
+  <path d="M 450 120 L 450 170 L 795 170 L 795 215" class="connector-dashed" marker-end="url(#arrowhead)"/>
+
+</svg>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/ico.png" type="image/x-icon">
+    <meta name="description" content="Jules GIRARD">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Jules GIRARD</title>
+</head>
+
+<body>
+    <header>
+        <h1>Jules GIRARD</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Présentation</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Présentation</h2>
+            <div class="box fade-in visible">
+                <div class="home-grid">
+                    <div class="home-info">
+                        <div class="info-item">
+                            <span class="info-label">NOM</span>
+                            <span>Girard</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">PRÉNOM</span>
+                            <span>Jules</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">ÂGE</span>
+                            <span>22 ans</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">STATUT</span>
+                            <span>Étudiant ingénieur</span>
+                        </div>
+                    </div>
+                    <div class="home-bio">
+                        <p>Actuellement en 2ème année de cycle ingénieur à l'<a href="https://www.isima.fr/">ISIMA</a> (Clermont Auvergne INP).</p>
+                        <p>Passionné par l'informatique, en particulier les <strong>réseaux</strong> et l'<strong>administration système</strong>. J'héberge chez moi un serveur Proxmox et des routeurs.</p>
+                        <p>J'ai aussi pour passion la <strong>domotique</strong> et les objets connectés. J'aime développer des <strong>programmes embarqués bas niveau</strong> et faire de l'impression 3D sur mon temps libre.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <ul class="box fade-in">
+                <li>Mail&nbsp;: <a href="mailto:jules.girard@etu.isima.fr">jules.girard@etu.isima.fr</a></li>
+                <li>Gitlab (Étudiant)&nbsp;: <a href="https://gitlab.isima.fr/jugirard3">@jugirard3</a></li>
+                <li>Github (Perso)&nbsp;: <a href="https://github.com/JulesGrd">@JulesGrd</a></li>
+            </ul>
+        </section>
+
+        <section id="projets">
+            <h2>Projets</h2>
+
+            <div>
+                <ul>
+                    <li>
+
+                    </li>
+                </ul>
+                <article>
+                    <h3>Trou.io</h3>
+                    <img src="./assets/projects/trouio.png" alt="Menu Trou.io" class="project-image">
+                    <a href="https://front-trouio.rozvictor.fr/" target="_blank">Jouer au jeu <img
+                            src="./assets/icons/external_link.png" alt="Lien externe" class="external-link"></a>
+                    <p>Clone du jeu hole.io avec un vrai multijoueur en temps reel</p>
+                    <p>backend en Typescript et Front end Angular communqcation en webscoket avec Colysesus. Rendu 3D
+                        avec Three.js</p>
+                    <p>Le container docker contenant le front end et le backend sont deployé automqtiquement avec Argo
+                        CD sur kubernetes avec Gitlab CI</p>
+                    <a href="https://gitlab.com/trou.io/front">Repository Frontend</a>
+                    <a href="https://gitlab.com/trou.io/colyseusstarter">Repository Backend</a>
+                </article>
+                <article>
+                    <h3>Serveur Proxmox</h3>
+                    <p>Automne 2025</p>
+                    <img src="./assets/projects/proxmox.png" alt="Serveur Proxmox" class="project-image">
+                    <p>Serveur de virtualisation Proxmox hébergé chez moi</p>
+                    <p>Il me permet d'héberger mes différents services et machines virtuelles pour mes projets
+                        personnels</p>
+
+                </article>
+                <article>
+                    <h3>Projet C / SDL - Jeu de labyrinthe</h3>
+                    <p>Juin 2025</p>
+                    <img src="./assets/projects/labyrinthe.png" alt="Jeu de labyrinthe" class="project-image">
+                    <a href="https://gitlab.isima.fr/jugirard3/projet-zz1/" target="_blank">Code (GitLab)</a>
+                    <p>Projet de fin de 1er année d'ingeneiur. Jeu de labyrinthe développé en C avec la bibliothèque SDL
+                    </p>
+                    <p>Implentation d'algorythme de parcours de graphes: DFS, BFS, Dijkstra, A* en C</p>
+                    <p>Jeu jouable a la manette</p>
+                </article>
+                <article>
+                    <h3>Lenia</h3>
+                    <p>Juin 2024</p>
+                    <img src="./assets/projects/lenia.png" alt="Lenia" class="project-image">
+                    <p>Projet de fin de 2ème annee de classe preparatoire. Simulation de vie biologique, un automate
+                        cellulaire continu en Python (une amelioration du jeu de la vie de Conway)</p>
+                </article>
+                <article>
+                    <h3> Jeu Mastermind </h3>
+                </article>
+            </div>
+
+
+            <div class="wrap-center">
+                <ul class="frise slide-in-right">
+                    <li class="frise-element">
+                        <div class="date">02/05/2023</div>
+                        <ul>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/02-05-2023/labyrinthe/">Le
+                                    labyrinthe (C)</a>
+                                <p class="doc"><a
+                                        href="https://perso.isima.fr/~jugirard3/rapports/02-05-2023/labyrinthe/doc/">Documentation
+                                        (Doxygen)</a></p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="frise-element">
+                        <div class="date">04/04/2023</div>
+                        <ul>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/04-04-2023/minimax_exercise/">Minimax
+                                    exercise (C)</a>
+                                <p class="doc"><a
+                                        href="https://perso.isima.fr/~jugirard3/rapports/04-04-2023/minimax_exercise/doc_minimax_exercise/code_8c.html">Documentation
+                                        (Doxygen)</a></p>
+                            </li>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/04-04-2023/minimax_simple_example/">Minimax
+                                    simple example (C)</a>
+                                <p class="doc"><a
+                                        href="https://perso.isima.fr/~jugirard3/rapports/04-04-2023/minimax_simple_example/doc_minimax_simple_example/code_8c.html">Documentation
+                                        (Doxygen)</a></p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="frise-element">
+                        <div class="date">28/03/2023</div>
+                        <ul>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/28-03-2023/bash_couleur/">Script
+                                    Bash et changement de couleurs
+                                    (Bash&nbsp;&amp;&nbsp;C)</a>
+                            </li>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/28-03-2023/nains/">Des nains sur des
+                                    épaules de géants (C)</a>
+                            </li>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/28-03-2023/sudoku/">Sudoku solver
+                                    (C)</a>
+                            </li>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/28-03-2023/killer_sudoku/">Killer
+                                    sudoku sover (C)</a>
+                            </li>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/28-03-2023/suguru/">Suguru solver
+                                    (C)</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="frise-element">
+                        <div class="date">06/03/2023</div>
+                        <ul>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/06-03-2023/lumen">Lumen (C)</a>
+                            </li>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/06-03-2023/brainfuck/">What the
+                                    Brainfuck ! (C)</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="frise-element">
+                        <div class="date">06/02/2023</div>
+                        <ul>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/06-02-2023/shadows-of-the-night-1">Shadows
+                                    of the knight EP1 (C)</a>
+                            </li>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/06-02-2023/shadows-of-the-night-2">Shadows
+                                    of the knight EP2 (C)</a>
+                            </li>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/06-02-2023/les-suites">Les suites
+                                    (Graphviz)</a>
+                            </li>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/06-02-2023/decouverte-orgmode">Découverte
+                                    de Org Mode
+                                    (Org&nbsp;Mode)</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="frise-element">
+                        <div class="date">31/01/2023</div>
+                        <ul>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/31-01-2023/pikaptcha/">Détective
+                                    Pikaptcha EP1 &amp; EP2 (Python)</a>
+                            </li>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/31-01-2023/page-web-libre/">Page web
+                                    libre (HTML&nbsp;&amp;&nbsp;CSS)</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="frise-element">
+                        <div class="date">24/01/2023</div>
+                        <ul>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/24-01-2023/ghost-legs/">Ghost Legs
+                                    (Python)</a>
+                            </li>
+                            <li>
+                                <a href="https://perso.isima.fr/~jugirard3/rapports/24-01-2023/sujet-libre/rapport.md">Exposé
+                                    sur un sujet libre
+                                    (Markdown)</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact">
+            <ul class="box fade-in">
+                <li>Discord&nbsp;: jg45#4641</li>
+                <li>Mail&nbsp;: <a href="mailto:jules.girard@etu.uca.fr">jules.girard@etu.uca.fr</a></li>
+                <li>Gitlab (Étudiant)&nbsp;: <a href="https://gitlab.isima.fr/jugirard3">@jugirard3</a></li>
+                <li>Github (Perso)&nbsp;: <a href="https://github.com/JulesGrd">@JulesGrd</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        const fadeIns = document.querySelectorAll(".fade-in");
+        const slideInLefts = document.querySelectorAll(".slide-in-left");
+        const slideInRights = document.querySelectorAll(".slide-in-right");
+
+        function checkScroll() {
+            const windowHeight = window.innerHeight;
+            const scrollY = window.scrollY || window.pageYOffset;
+
+            fadeIns.forEach((element) => {
+                const elementTop = element.getBoundingClientRect().top + scrollY;
+                if (scrollY + windowHeight > elementTop) {
+                    element.classList.add("visible");
+                }
+            });
+
+            slideInLefts.forEach((element) => {
+                const elementTop = element.getBoundingClientRect().top + scrollY;
+                if (scrollY + windowHeight > elementTop) {
+                    element.classList.add("visible");
+                }
+            });
+
+            slideInRights.forEach((element) => {
+                const elementTop = element.getBoundingClientRect().top + scrollY;
+                if (scrollY + windowHeight > elementTop) {
+                    element.classList.add("visible");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", checkScroll);
+        window.addEventListener("load", checkScroll);
+    </script>
+
+
+
+</body>
+
+</html>
