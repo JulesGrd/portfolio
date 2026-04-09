@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -8,6 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./assets/ico.png" type="image/x-icon">
     <meta name="description" content="Portfolio de Jules Girard, étudiant ingénieur à l'ISIMA — passionné par les réseaux, l'administration système et la domotique.">
+    <link rel="canonical" href="https://julesgirard.dev/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://julesgirard.dev/">
+    <meta property="og:title" content="Jules Girard — Portfolio">
+    <meta property="og:description" content="Étudiant ingénieur à l'ISIMA, passionné par les réseaux, l'administration système et la domotique.">
 
     <link rel="stylesheet" href="style.css">
     <script data-goatcounter="https://jg45.goatcounter.com/count"
@@ -46,7 +53,7 @@
                         </div>
                         <div class="info-item">
                             <span class="info-label">ÂGE</span>
-                            <span>22 ans</span>
+                            <span id="age"></span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">STATUT</span>
@@ -244,7 +251,7 @@
                         </div>
                         <p>Application web développée en Python avec Django.</p>
                         <div class="project-links">
-                            <a href="https://github.com/JulesGrd/monod-crush" target="_blank">GitHub</a>
+                            <a href="https://github.com/BenoitPrmt/Monod-Crush" target="_blank">GitHub</a>
                         </div>
                     </div>
                 </article>
@@ -406,39 +413,54 @@
         </section>
     </main>
 
+    <button id="scrollTop" aria-label="Retour en haut" title="Retour en haut">↑</button>
+
     <script>
-        const fadeIns = document.querySelectorAll(".fade-in");
-        const slideInLefts = document.querySelectorAll(".slide-in-left");
-        const slideInRights = document.querySelectorAll(".slide-in-right");
+        // ── Âge dynamique ────────────────────────────────────────────────────
+        const birth = new Date(2004, 0, 7);
+        const now = new Date();
+        let age = now.getFullYear() - birth.getFullYear();
+        if (now < new Date(now.getFullYear(), 0, 7)) age--;
+        document.getElementById("age").textContent = age + " ans";
 
-        function checkScroll() {
-            const windowHeight = window.innerHeight;
-            const scrollY = window.scrollY || window.pageYOffset;
+        // ── Animations au scroll (IntersectionObserver) ──────────────────────
+        const animObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((e) => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add("visible");
+                        animObserver.unobserve(e.target);
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+        document.querySelectorAll(".fade-in, .slide-in-left, .slide-in-right")
+            .forEach((el) => animObserver.observe(el));
 
-            fadeIns.forEach((element) => {
-                const elementTop = element.getBoundingClientRect().top + scrollY;
-                if (scrollY + windowHeight > elementTop) {
-                    element.classList.add("visible");
-                }
-            });
+        // ── Nav active au scroll ──────────────────────────────────────────────
+        const sections = document.querySelectorAll("main section[id]");
+        const navLinks = document.querySelectorAll("nav a");
+        const navObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((e) => {
+                    if (e.isIntersecting) {
+                        navLinks.forEach((a) => a.classList.remove("active"));
+                        const active = document.querySelector(`nav a[href="#${e.target.id}"]`);
+                        if (active) active.classList.add("active");
+                    }
+                });
+            },
+            { rootMargin: "-40% 0px -55% 0px" }
+        );
+        sections.forEach((s) => navObserver.observe(s));
 
-            slideInLefts.forEach((element) => {
-                const elementTop = element.getBoundingClientRect().top + scrollY;
-                if (scrollY + windowHeight > elementTop) {
-                    element.classList.add("visible");
-                }
-            });
-
-            slideInRights.forEach((element) => {
-                const elementTop = element.getBoundingClientRect().top + scrollY;
-                if (scrollY + windowHeight > elementTop) {
-                    element.classList.add("visible");
-                }
-            });
-        }
-
-        window.addEventListener("scroll", checkScroll);
-        window.addEventListener("load", checkScroll);
+        // ── Bouton retour en haut ─────────────────────────────────────────────
+        const scrollTopBtn = document.getElementById("scrollTop");
+        window.addEventListener("scroll", () => {
+            scrollTopBtn.classList.toggle("visible", window.scrollY > 400);
+        }, { passive: true });
+        scrollTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
         function toggleFrise(btn) {
             const collapse = document.getElementById("friseCollapse");
